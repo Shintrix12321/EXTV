@@ -37,7 +37,7 @@ button,input{font:inherit}button{cursor:pointer}.top{height:64px;border-bottom:1
 </div></div>
 <script>
 const API='https://graphql.anilist.co';
-const Q=`query($page:Int,$search:String,$year:Int,$status:MediaStatus){Page(page:$page,perPage:24){pageInfo{currentPage lastPage hasNextPage}media(type:ANIME,search:$search,seasonYear:$year,status:$status,sort:POPULARITY_DESC,isAdult:false){id title{romaji english native userPreferred}synonyms coverImage{extraLarge large medium}bannerImage description(asHtml:false)episodes duration status format seasonYear averageScore genres tags{name}trailer{id site}}}}`;
+const Q=`query($page:Int,$search:String,$year:String,$status:MediaStatus){Page(page:$page,perPage:50){pageInfo{currentPage lastPage hasNextPage}media(type:ANIME,search:$search,startDate_like:$year,status:$status,sort:POPULARITY_DESC,isAdult:false){id title{romaji english native userPreferred}synonyms coverImage{extraLarge large medium}bannerImage description(asHtml:false)episodes duration status format seasonYear averageScore genres tags{name}trailer{id site}}}}`;
 const FETCH_TIMEOUT=12000;
 const EPISODE_SOURCES={};
 let page=1,hasNext=true,current=null,query='',filter='',episodeNo=1;
@@ -63,7 +63,7 @@ async function load(reset=true){
   if(reset){page=1;$('grid').innerHTML='';$('more').innerHTML=''}
   $('count').textContent='Загрузка…';
   try{
-    const status=filter==='ongoing'?'RELEASING':null,yearVal=/^\d+$/.test(filter)?Number(filter):null;
+    const status=filter==='ongoing'?'RELEASING':null,yearVal=/^\d+$/.test(filter)?String(filter):null;
     const data=await fetchAnime(page,query,yearVal,status);hasNext=data.pageInfo.hasNextPage;
     data.media.map(map).forEach(a=>$('grid').appendChild(card(a)));
     $('count').textContent=document.querySelectorAll('.card').length+' тайтлов';
