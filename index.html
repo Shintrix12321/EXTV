@@ -1,120 +1,54 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EXTV — Аниме</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lumora</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0d0e10;color:#f4f4f5;font-family:Inter,Arial,sans-serif}
-header{position:sticky;top:0;z-index:20;background:#111216f2;border-bottom:1px solid #292a30;backdrop-filter:blur(14px)}
-.bar,main{max-width:1400px;margin:auto}.bar{height:64px;padding:0 22px;display:flex;align-items:center;gap:14px}
-.logo{font-weight:900;font-size:22px;letter-spacing:.5px}.logo span{color:#ff4d5e}
-.search{flex:1;max-width:700px;background:#191a1e;color:#fff;border:1px solid #303238;border-radius:9px;padding:11px 14px;outline:0}.search:focus{border-color:#ff4d5e}
-button{font:inherit;border:1px solid #35363c;background:#191a1e;color:#eee;border-radius:8px;padding:10px 14px;cursor:pointer}button:hover{border-color:#ff4d5e}button:disabled{opacity:.45;cursor:not-allowed}
-.primary{background:#ff4d5e;color:#111;border-color:#ff4d5e;font-weight:800}
-main{padding:20px 22px}.hero{padding:30px;border:1px solid #303139;border-radius:15px;background:linear-gradient(110deg,#28171d,#17181d 58%,#111215)}
-.hero h1{margin:0 0 9px;font-size:clamp(28px,4vw,45px)}.hero p{color:#a9abb3;line-height:1.55;max-width:900px}
-.actions{display:flex;gap:10px;flex-wrap:wrap}.status{text-align:center;color:#a9abb3;padding:30px}.spinner{display:inline-block;width:25px;height:25px;border:3px solid #555;border-top-color:#ff4d5e;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:16px;margin-top:22px}
-.card{background:#18191d;border:1px solid #2f3036;border-radius:10px;overflow:hidden;color:#f4f4f5;text-decoration:none;cursor:pointer;transition:.18s}.card:hover{transform:translateY(-3px);border-color:#ff4d5e}
-.cover{aspect-ratio:2/3;background:#24262b}.cover img{width:100%;height:100%;object-fit:cover;display:block}.ct{padding:11px 12px}.ct b{display:block;line-height:1.35;min-height:38px}.ct small{display:block;color:#a9abb3;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pages{display:flex;justify-content:center;align-items:center;gap:8px;margin:26px 0}.pages span{color:#aaa;padding:10px}
-.note{font-size:12px;color:#70727a;line-height:1.55}
-.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal.open{display:flex}.player{width:min(1050px,100%);background:#121317;border:1px solid #363840;border-radius:12px;overflow:hidden;box-shadow:0 20px 70px #000}
-.player-head{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid #2d2e34}.player-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.player-body{padding:14px}.screen{aspect-ratio:16/9;background:#050505;border-radius:8px;overflow:hidden}.screen iframe,.screen video{width:100%;height:100%;border:0;display:block}.switch{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.muted{color:#a0a2a9;font-size:13px}
-@media(max-width:700px){.bar{height:auto;padding:9px 12px}.bar button{display:none}main{padding:14px 12px}.hero{padding:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.search{min-width:0}}
+:root{--bg:#09090b;--surface:#141418;--elev:#1c1c22;--fg:#f4f4f5;--muted:#a1a1aa;--primary:#e11d48;--border:#27272a}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font-family:Sora,Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.top{height:64px;border-bottom:1px solid var(--border);background:#09090bf2;backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
+.nav{height:100%;max-width:1120px;margin:auto;padding:0 0;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:800;font-size:16px}.brand .play{width:22px;height:22px;border:2px solid var(--primary);border-radius:50%;display:grid;place-items:center;color:var(--primary);font-size:10px}.links{display:flex;gap:24px}.links a{color:var(--muted);text-decoration:none;font-size:14px}.links a:hover{color:#fff}
+.search{margin-left:auto;width:320px;height:40px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:#fff;padding:0 14px 0 38px;outline:0}.search:focus{border-color:#52525b;box-shadow:0 0 0 3px #e11d4822}.searchWrap{position:relative}.searchIcon{position:absolute;left:12px;top:11px;color:#a1a1aa}.iconBtn{width:40px;height:40px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:#a1a1aa}
+.wrap{max-width:1120px;margin:auto}.hero{position:relative;min-height:455px;overflow:hidden}.heroBg{position:absolute;inset:0;background-position:center;background-size:cover;filter:saturate(.8);opacity:.4}.heroShade{position:absolute;inset:0;background:linear-gradient(90deg,#09090b 4%,#09090be8 38%,#09090b66 75%,#09090b 100%),linear-gradient(0deg,#09090b 0%,transparent 45%)}.heroInner{position:relative;display:grid;grid-template-columns:220px 1fr;gap:32px;padding:64px 0}.poster{width:220px;aspect-ratio:2/3;object-fit:cover;border-radius:16px;box-shadow:0 20px 50px #0008;border:1px solid #ffffff12}.eyebrow{color:#f43f5e;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:48px;line-height:1.05;margin:8px 0 8px;letter-spacing:-1.5px}.subtitle{font-size:17px;color:var(--muted);margin:0 0 18px}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--border);border-radius:999px;padding:6px 12px;color:var(--muted);font-size:13px}.rating{color:#fff;background:#18181d}.rating b{color:#fb7185}.desc{max-width:700px;color:#a1a1aa;line-height:1.65;font-size:14px;margin:18px 0}.primary{border:0;background:var(--primary);color:#fff;border-radius:10px;padding:13px 20px;font-weight:800}.catalog{padding:38px 0 70px}.catHead{display:flex;justify-content:space-between;align-items:center}.catHead h2{margin:0;font-size:21px}.count{color:var(--muted);font-size:13px}.filters{display:flex;gap:8px;overflow:auto;padding:20px 0}.filter{white-space:nowrap;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:999px;padding:8px 13px}.filter.active,.filter:hover{background:var(--primary);border-color:var(--primary);color:#fff}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{background:transparent;min-width:0;cursor:pointer}.cover{position:relative;aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--border)}.cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.2s}.card:hover .cover img{transform:scale(1.025)}.age{position:absolute;top:8px;right:8px;background:var(--primary);padding:4px 7px;border-radius:7px;font-size:11px;font-weight:800}.ct{padding:9px 2px}.ct b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}.ct small{display:block;color:var(--muted);margin-top:4px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.loading{text-align:center;color:var(--muted);padding:50px}.more{display:flex;justify-content:center;margin-top:28px}.modal{position:fixed;inset:0;background:#000c;z-index:50;display:none;overflow:auto}.modal.open{display:block}.sheet{max-width:1120px;margin:35px auto;background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 30px 100px #000}.sheetTop{display:flex;justify-content:flex-end;padding:10px}.close{border:1px solid var(--border);background:var(--surface);color:#fff;border-radius:9px;width:38px;height:38px}.detail{display:grid;grid-template-columns:240px 1fr;gap:32px;padding:0 28px 28px}.detailPoster{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:12px}.detail h2{font-size:38px;margin:5px 0}.meta{display:grid;grid-template-columns:130px 1fr;gap:8px;color:var(--muted);font-size:14px;margin:20px 0}.meta strong{color:#f4f4f5;font-weight:500}.watch{margin-top:18px}.playerBox{border-top:1px solid var(--border);padding:22px 28px 28px}.playerTabs{display:flex;gap:8px;margin-bottom:12px}.playerTab{border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:8px;padding:9px 13px}.playerTab.active{border-color:var(--primary);color:#fff}.video{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--border)}.video iframe,.video video{width:100%;height:100%;border:0;display:block}.hint{color:var(--muted);font-size:12px;line-height:1.5;margin-top:9px}.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px}
+@media(max-width:900px){.nav,.wrap{padding-left:16px;padding-right:16px}.links{display:none}.search{width:min(300px,45vw)}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.heroInner{padding:45px 16px}.hero h1{font-size:40px}}
+@media(max-width:620px){.nav{gap:10px}.brand{margin-right:auto}.search{width:calc(100vw - 150px)}.iconBtn{display:none}.heroInner{grid-template-columns:110px 1fr;gap:16px;padding:30px 16px}.poster{width:110px;border-radius:10px}.hero h1{font-size:28px}.subtitle{font-size:14px}.desc{font-size:13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.detail{grid-template-columns:100px 1fr;gap:16px;padding:0 16px 18px}.detail h2{font-size:25px}.meta{grid-template-columns:90px 1fr;font-size:12px}.playerBox{padding:16px}}
 </style>
 </head>
 <body>
-<header><div class="bar">
-<div class="logo">EXT<span>V</span></div>
-<input id="search" class="search" placeholder="Поиск аниме..." autocomplete="off">
-<button id="random">Случайное</button>
+<header class="top"><div class="nav">
+<a class="brand" href="#" onclick="return home()"><span class="play">▶</span>Lumora</a>
+<nav class="links"><a href="#" onclick="return home()">Каталог</a><a href="#" onclick="return ongoing()">Онгоинг</a><a href="#" onclick="return year(2026)">2026</a><a href="#" onclick="return year(2025)">2025</a></nav>
+<div class="searchWrap"><span class="searchIcon">⌕</span><input id="search" class="search" placeholder="Поиск аниме..." autocomplete="off"></div>
+<button class="iconBtn">♧</button><button class="iconBtn">♙</button>
 </div></header>
-<main>
-<section class="hero">
-<h1>Аниме с настоящими обложками</h1>
-<p>Каталог получает реальные данные и обложки из AniList. Если AniList временно недоступен, автоматически используется Jikan. Никаких сгенерированных ИИ обложек.</p>
-<div class="actions"><button id="popular" class="primary">Популярные</button><button id="retry">Повторить</button></div>
-</section>
-<div id="status" class="status"><span class="spinner"></span><br>Загружаем аниме…</div>
-<div id="grid" class="grid"></div>
-<div id="pages" class="pages"></div>
-<p class="note">В карточке «Смотреть» открывается доступный официальный трейлер. Полные серии нельзя легально раздавать с чужих серверов без разрешения правообладателя; поэтому я не подставляю пиратские видеоссылки.</p>
-</main>
+<section class="hero"><div id="heroBg" class="heroBg"></div><div class="heroShade"></div><div class="wrap heroInner">
+<img id="heroPoster" class="poster" alt=""><div><div class="eyebrow">Рекомендуем</div><h1 id="heroTitle">Загрузка…</h1><p id="heroSub" class="subtitle"></p><div id="heroChips" class="chips"></div><p id="heroDesc" class="desc"></p><button id="heroWatch" class="primary">▶ &nbsp; Смотреть</button></div>
+</div></section>
+<main class="wrap catalog"><div class="catHead"><h2>Каталог</h2><span id="count" class="count"></span></div><div id="filters" class="filters"></div><div id="grid" class="grid"><div class="loading">Загружаем реальные аниме…</div></div><div id="more" class="more"></div></main>
 
-<div id="modal" class="modal">
-<div class="player">
-<div class="player-head"><div id="ptitle" class="player-title">Плеер</div><button id="close">✕</button></div>
-<div class="player-body">
-<div id="screen" class="screen"></div>
-<div class="switch"><button id="yt" class="primary">YouTube</button><button id="demo">HTML5-плеер</button></div>
-<div id="pinfo" class="muted" style="margin-top:9px"></div>
-</div></div></div>
-
+<div id="modal" class="modal"><div class="sheet"><div class="sheetTop"><button class="close" onclick="closeModal()">✕</button></div>
+<div class="detail"><img id="detailPoster" class="detailPoster" alt=""><div><div id="detailOrig" class="count"></div><h2 id="detailTitle"></h2><p id="detailSub" class="subtitle"></p><div id="detailChips" class="chips"></div><div class="meta"><span>Тип</span><strong id="mType">—</strong><span>Эпизоды</span><strong id="mEpisodes">—</strong><span>Год</span><strong id="mYear">—</strong><span>Статус</span><strong id="mStatus">—</strong><span>Рейтинг</span><strong id="mRating">—</strong></div><p id="detailDesc" class="desc"></p></div></div>
+<div class="playerBox"><div class="playerTabs"><button id="tabYT" class="playerTab active" onclick="showYT()">Плеер 1 · YouTube</button><button id="tabHTML" class="playerTab" onclick="showHTML()">Плеер 2 · HTML5</button></div><div id="video" class="video"></div><div id="hint" class="hint"></div></div>
+</div></div>
 <script>
-const ANILIST='https://graphql.anilist.co';
-const JIKAN='https://api.jikan.moe/v4/anime';
-let page=1,query='',last=1,current=null;
+const API='https://graphql.anilist.co';
+const Q=`query($page:Int,$search:String,$year:Int,$status:MediaStatus){Page(page:$page,perPage:24){pageInfo{currentPage lastPage hasNextPage}media(type:ANIME,search:$search,seasonYear:$year,status:$status,sort:POPULARITY_DESC,isAdult:false){id title{romaji english native userPreferred}coverImage{extraLarge large medium}bannerImage description(asHtml:false)episodes duration status format seasonYear averageScore genres tags{name}trailer{id site} }}}`;
+let page=1,hasNext=true,current=null,query='',filter='';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const animeQuery=`
-query($page:Int,$search:String){
- Page(page:$page,perPage:24){
-  pageInfo{currentPage lastPage hasNextPage}
-  media(type:ANIME,search:$search,sort:POPULARITY_DESC,isAdult:false){
-   id siteUrl title{romaji english native userPreferred}
-   coverImage{extraLarge large medium}
-   episodes seasonYear format averageScore
-   trailer{id site}
-  }
- }
-}`;
-async function ani(search,p){
- const r=await fetch(ANILIST,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({query:animeQuery,variables:{page:p,search:search||null}})});
- if(!r.ok)throw Error('AniList HTTP '+r.status);
- const j=await r.json();if(j.errors)throw Error(j.errors[0]?.message||'AniList error');
- return j.data.Page;
-}
-async function jikan(search,p){
- const u=new URL(JIKAN);u.searchParams.set('page',p);u.searchParams.set('limit',24);u.searchParams.set('sfw','true');u.searchParams.set('order_by','score');u.searchParams.set('sort','desc');
- if(search)u.searchParams.set('q',search);
- const r=await fetch(u);if(!r.ok)throw Error('Jikan HTTP '+r.status);const j=await r.json();
- return {media:(j.data||[]).map(a=>({id:a.mal_id,siteUrl:'https://myanimelist.net/anime/'+a.mal_id,title:{romaji:a.title,english:a.title,userPreferred:a.title},coverImage:{extraLarge:a.images?.jpg?.large_image_url,large:a.images?.jpg?.image_url},episodes:a.episodes,seasonYear:a.year,format:a.type,averageScore:a.score?Math.round(a.score*10):null,trailer:null})),pageInfo:{currentPage:p,lastPage:j.pagination?.last_visible_page||1,hasNextPage:!!j.pagination?.has_next_page}},fallback:true};
-}
-function title(a){return a.title?.userPreferred||a.title?.english||a.title?.romaji||a.title?.native||'Без названия'}
-function card(a){
- const e=document.createElement('div');e.className='card';
- const img=a.coverImage?.extraLarge||a.coverImage?.large||a.coverImage?.medium;
- const meta=[a.seasonYear,a.format,a.episodes? a.episodes+' эп.':'',a.averageScore?'★ '+(a.averageScore/10).toFixed(1):''].filter(Boolean).join(' · ');
- e.innerHTML='<div class="cover">'+(img?'<img loading="lazy" src="'+img+'" alt="'+esc(title(a))+'">':'')+'</div><div class="ct"><b>'+esc(title(a))+'</b><small>'+esc(meta)+'</small></div>';
- e.onclick=()=>openPlayer(a);return e;
-}
-async function load(q='',p=1){
- query=q;page=p;$('grid').innerHTML='';$('pages').innerHTML='';$('status').style.display='block';$('status').innerHTML='<span class="spinner"></span><br>Загружаем аниме…';
- try{
-  let data,source;
-  try{data=await ani(q,p);source='AniList';}catch(e){data=await jikan(q,p);source='Jikan';}
-  last=data.pageInfo.lastPage||p;
-  if(!data.media?.length){$('status').textContent='Ничего не найдено.';return}
-  $('status').style.display='none';data.media.forEach(a=>$('grid').appendChild(card(a)));
-  const b=document.createElement('button');b.textContent='← Назад';b.disabled=p<=1;b.onclick=()=>load(query,p-1);
-  const s=document.createElement('span');s.textContent='Страница '+p+' из '+last+' · '+source;
-  const n=document.createElement('button');n.textContent='Дальше →';n.disabled=!data.pageInfo.hasNextPage && p>=last;n.onclick=()=>load(query,p+1);
-  $('pages').append(b,s,n);
- }catch(e){$('status').innerHTML='Оба каталога сейчас недоступны.<br><small>'+esc(e.message)+'</small><br><br><button class="primary" onclick="load(query,page)">Повторить</button>'}
-}
-function openPlayer(a){
- current=a;$('modal').classList.add('open');$('ptitle').textContent=title(a);
- const t=a.trailer?.id;const site=a.trailer?.site;
- $('pinfo').textContent=t&&a.site==='youtube'?'Официальный трейлер YouTube':'Для этого тайтла API не вернул трейлер. Можно использовать HTML5-режим для собственного разрешённого видео.';
- if(t&&a.site==='youtube')showYT(t);else showDemo();
-}
-function showYT(id){$('screen').innerHTML='<iframe src="https://www.youtube.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';$('yt').classList.add('primary');$('demo').classList.remove('primary')}
-function showDemo(){ $('screen').innerHTML='<video controls playsinline src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>';$('demo').classList.add('primary');$('yt').classList.remove('primary');$('pinfo').textContent='Демо HTML5-видео. Замени src на URL своего разрешённого видео, если у тебя есть права на его размещение.'}
-$('close').onclick=()=>{$('modal').classList.remove('open');$('screen').innerHTML=''};$('modal').onclick=e=>{if(e.target===$('modal'))$('close').click()};$('yt').onclick=()=>{const id=current?.trailer?.id;if(id&&current.trailer.site==='youtube')showYT(id)};$('demo').onclick=showDemo;
-let timer;$('search').oninput=e=>{clearTimeout(timer);timer=setTimeout(()=>load(e.target.value.trim(),1),450)};$('popular').onclick=()=>load('',1);$('retry').onclick=()=>load(query,page);
-$('random').onclick=async()=>{try{const d=await ani('',1),a=d.media[Math.floor(Math.random()*d.media.length)];openPlayer(a)}catch{}};
-load('',1);
+function t(a){return a.title?.userPreferred||a.title?.english||a.title?.romaji||a.title?.native||'Без названия'}
+function map(a){return {...a,titleText:t(a),cover:a.coverImage?.extraLarge||a.coverImage?.large||a.coverImage?.medium||''}}
+async function fetchAnime(p=1,q='',year=null,status=null){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:Q,variables:{page:p,search:q||null,year,status}})});if(!r.ok)throw Error('API '+r.status);const j=await r.json();if(j.errors)throw Error(j.errors[0]?.message||'API error');return j.data.Page}
+function card(a){const d=map(a),e=document.createElement('article');e.className='card';e.innerHTML='<div class="cover"><img loading="lazy" src="'+d.cover+'" alt="'+esc(d.titleText)+'"><span class="age">'+(d.format==='MOVIE'?'Фильм':'Аниме')+'</span></div><div class="ct"><b>'+esc(d.titleText)+'</b><small>'+esc([d.seasonYear,d.format,d.averageScore?'★ '+(d.averageScore/10).toFixed(1):''].filter(Boolean).join(' · '))+'</small></div>';e.onclick=()=>openAnime(d);return e}
+async function load(reset=true){if(reset){page=1;$('grid').innerHTML='';$('more').innerHTML=''}$('count').textContent='Загрузка…';try{const status=filter==='ongoing'?'RELEASING':null,yearVal=/^\d+$/.test(filter)?Number(filter):null;const data=await fetchAnime(page,query,yearVal,status);hasNext=data.pageInfo.hasNextPage;data.media.map(map).forEach(a=>$('grid').appendChild(card(a)));$('count').textContent=(page===1?'':'Загружено ')+(document.querySelectorAll('.card').length)+' тайтлов';if(hasNext){const b=document.createElement('button');b.className='primary';b.textContent='Загрузить ещё';b.onclick=()=>{page++;load(false)};$('more').appendChild(b)}}catch(e){$('grid').innerHTML='<div class="empty">Не удалось загрузить каталог.<br>'+esc(e.message)+'<br><br><button class="primary" onclick="load()">Повторить</button></div>'}}
+function openAnime(a){current=a;$('modal').classList.add('open');$('detailPoster').src=a.cover;$('detailTitle').textContent=a.titleText;$('detailOrig').textContent=a.title?.romaji||'';$('detailSub').textContent=[a.format==='TV'?'Сериал':a.format==='MOVIE'?'Фильм':a.format,a.seasonYear?'· '+a.seasonYear:''].join(' ');$('detailChips').innerHTML=(a.genres||[]).slice(0,5).map(g=>'<span class="chip">'+esc(g)+'</span>').join('');$('mType').textContent=a.format||'—';$('mEpisodes').textContent=a.episodes||'—';$('mYear').textContent=a.seasonYear||'—';$('mStatus').textContent=a.status||'—';$('mRating').textContent=a.averageScore?(a.averageScore/10).toFixed(1)+'/10':'—';$('detailDesc').textContent=(a.description||'Описание отсутствует.').replace(/<[^>]+>/g,'');showYT()}
+function showYT(){if(!current)return;$('tabYT').classList.add('active');$('tabHTML').classList.remove('active');const tr=current.trailer;if(tr?.site==='youtube'&&tr.id){$('video').innerHTML='<iframe src="https://www.youtube.com/embed/'+encodeURIComponent(tr.id)+'?autoplay=0&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';$('hint').textContent='Официальный трейлер/видео, предоставленный YouTube.'}else{$('video').innerHTML='<div style="height:100%;display:grid;place-items:center;color:#a1a1aa;padding:30px;text-align:center">Для этого тайтла AniList не указал YouTube-трейлер.</div>';$('hint').textContent='Если у тебя есть легальный URL полного видео, его можно подключить к HTML5-плееру.'}}
+function showHTML(){if(!current)return;$('tabHTML').classList.add('active');$('tabYT').classList.remove('active');$('video').innerHTML='<video controls playsinline preload="metadata"></video>';$('hint').textContent='HTML5-плеер оставлен для твоих собственных/разрешённых видео. Я не подставляю пиратские ссылки на серии.'}
+function closeModal(){$('modal').classList.remove('open');$('video').innerHTML='';current=null}
+$('modal').onclick=e=>{if(e.target===$('modal'))closeModal()};
+$('search').oninput=e=>{clearTimeout(window.st);query=e.target.value.trim();window.st=setTimeout(()=>load(true),450)};
+function home(){query='';filter='';$('search').value='';load();return false}function ongoing(){filter='ongoing';query='';$('search').value='';load();return false}function year(y){filter=String(y);query='';$('search').value='';load();return false}
+(async()=>{try{const d=await fetchAnime(1);if(d.media[0]){const a=map(d.media[0]);$('heroBg').style.backgroundImage='url("'+a.bannerImage+'")';$('heroPoster').src=a.cover;$('heroTitle').textContent=a.titleText;$('heroSub').textContent=[a.format==='TV'?'Сериал':a.format,a.seasonYear?'· '+a.seasonYear:''].join(' ');$('heroChips').innerHTML='<span class="chip rating">★ <b>'+((a.averageScore||0)/10).toFixed(1)+'</b></span>'+((a.genres||[]).slice(0,2).map(g=>'<span class="chip">'+esc(g)+'</span>').join(''));$('heroDesc').textContent=(a.description||'').replace(/<[^>]+>/g,'').slice(0,420);$('heroWatch').onclick=()=>openAnime(a)}}catch{}load()})()
 </script>
-</body></html>
+</body>
+</html>
