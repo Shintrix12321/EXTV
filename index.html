@@ -12,6 +12,11 @@ button,input{font:inherit}button{cursor:pointer}.top{height:64px;border-bottom:1
 .wrap{max-width:1120px;margin:auto}.hero{position:relative;min-height:455px;overflow:hidden}.heroBg{position:absolute;inset:0;background-position:center;background-size:cover;filter:saturate(.8);opacity:.4}.heroShade{position:absolute;inset:0;background:linear-gradient(90deg,#09090b 4%,#09090be8 38%,#09090b66 75%,#09090b 100%),linear-gradient(0deg,#09090b 0%,transparent 45%)}.heroInner{position:relative;display:grid;grid-template-columns:220px 1fr;gap:32px;padding:64px 0}.poster{width:220px;aspect-ratio:2/3;object-fit:cover;border-radius:16px;box-shadow:0 20px 50px #0008;border:1px solid #ffffff12}.eyebrow{color:#f43f5e;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:48px;line-height:1.05;margin:8px 0 8px;letter-spacing:-1.5px}.subtitle{font-size:17px;color:var(--muted);margin:0 0 18px}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--border);border-radius:999px;padding:6px 12px;color:var(--muted);font-size:13px}.rating{color:#fff;background:#18181d}.rating b{color:#fb7185}.desc{max-width:700px;color:#a1a1aa;line-height:1.65;font-size:14px;margin:18px 0}.primary{border:0;background:var(--primary);color:#fff;border-radius:10px;padding:13px 20px;font-weight:800}.catalog{padding:38px 0 70px}.catHead{display:flex;justify-content:space-between;align-items:center}.catHead h2{margin:0;font-size:21px}.count{color:var(--muted);font-size:13px}.filters{display:flex;gap:8px;overflow:auto;padding:20px 0}.filter{white-space:nowrap;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:999px;padding:8px 13px}.filter.active,.filter:hover{background:var(--primary);border-color:var(--primary);color:#fff}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{background:transparent;min-width:0;cursor:pointer}.cover{position:relative;aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--border)}.cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.2s}.card:hover .cover img{transform:scale(1.025)}.age{position:absolute;top:8px;right:8px;background:var(--primary);padding:4px 7px;border-radius:7px;font-size:11px;font-weight:800}.ct{padding:9px 2px}.ct b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}.ct small{display:block;color:var(--muted);margin-top:4px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.loading{text-align:center;color:var(--muted);padding:50px}.more{display:flex;justify-content:center;margin-top:28px}.modal{position:fixed;inset:0;background:#000c;z-index:50;display:none;overflow:auto}.modal.open{display:block}.sheet{max-width:1120px;margin:35px auto;background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 30px 100px #000}.sheetTop{display:flex;justify-content:flex-end;padding:10px}.close{border:1px solid var(--border);background:var(--surface);color:#fff;border-radius:9px;width:38px;height:38px}.detail{display:grid;grid-template-columns:240px 1fr;gap:32px;padding:0 28px 28px}.detailPoster{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:12px}.detail h2{font-size:38px;margin:5px 0}.meta{display:grid;grid-template-columns:130px 1fr;gap:8px;color:var(--muted);font-size:14px;margin:20px 0}.meta strong{color:#f4f4f5;font-weight:500}.watch{margin-top:18px}.playerBox{border-top:1px solid var(--border);padding:22px 28px 28px}.playerTabs{display:flex;gap:8px;margin-bottom:12px}.playerTab{border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:8px;padding:9px 13px}.playerTab.active{border-color:var(--primary);color:#fff}.video{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--border)}.video iframe,.video video{width:100%;height:100%;border:0;display:block}.hint{color:var(--muted);font-size:12px;line-height:1.5;margin-top:9px}.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px}
 @media(max-width:900px){.nav,.wrap{padding-left:16px;padding-right:16px}.links{display:none}.search{width:min(300px,45vw)}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.heroInner{padding:45px 16px}.hero h1{font-size:40px}}
 @media(max-width:620px){.nav{gap:10px}.brand{margin-right:auto}.search{width:calc(100vw - 150px)}.iconBtn{display:none}.heroInner{grid-template-columns:110px 1fr;gap:16px;padding:30px 16px}.poster{width:110px;border-radius:10px}.hero h1{font-size:28px}.subtitle{font-size:14px}.desc{font-size:13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.detail{grid-template-columns:100px 1fr;gap:16px;padding:0 16px 18px}.detail h2{font-size:25px}.meta{grid-template-columns:90px 1fr;font-size:12px}.playerBox{padding:16px}}
+
+.episodes{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 12px}
+.episode{border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:8px;padding:8px 11px}
+.episode.active,.episode:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+.sourceRow{display:flex;gap:8px;margin-top:10px}.sourceInput{flex:1;min-width:0;border:1px solid var(--border);background:var(--surface);color:#fff;border-radius:8px;padding:9px 11px}.sourceBtn{border:1px solid var(--border);background:var(--surface);color:#fff;border-radius:8px;padding:9px 12px}
 </style>
 </head>
 <body>
@@ -28,27 +33,91 @@ button,input{font:inherit}button{cursor:pointer}.top{height:64px;border-bottom:1
 
 <div id="modal" class="modal"><div class="sheet"><div class="sheetTop"><button class="close" onclick="closeModal()">✕</button></div>
 <div class="detail"><img id="detailPoster" class="detailPoster" alt=""><div><div id="detailOrig" class="count"></div><h2 id="detailTitle"></h2><p id="detailSub" class="subtitle"></p><div id="detailChips" class="chips"></div><div class="meta"><span>Тип</span><strong id="mType">—</strong><span>Эпизоды</span><strong id="mEpisodes">—</strong><span>Год</span><strong id="mYear">—</strong><span>Статус</span><strong id="mStatus">—</strong><span>Рейтинг</span><strong id="mRating">—</strong></div><p id="detailDesc" class="desc"></p></div></div>
-<div class="playerBox"><div class="playerTabs"><button id="tabYT" class="playerTab active" onclick="showYT()">Плеер 1 · YouTube</button><button id="tabHTML" class="playerTab" onclick="showHTML()">Плеер 2 · HTML5</button></div><div id="video" class="video"></div><div id="hint" class="hint"></div></div>
+<div class="playerBox"><div class="playerTabs"><button id="tabYT" class="playerTab active" onclick="showYT()">Трейлер</button><button id="tabHTML" class="playerTab" onclick="showHTML()">Серии</button></div><div id="episodes" class="episodes"></div><div id="video" class="video"></div><div id="hint" class="hint"></div></div>
 </div></div>
 <script>
 const API='https://graphql.anilist.co';
-const Q=`query($page:Int,$search:String,$year:Int,$status:MediaStatus){Page(page:$page,perPage:24){pageInfo{currentPage lastPage hasNextPage}media(type:ANIME,search:$search,seasonYear:$year,status:$status,sort:POPULARITY_DESC,isAdult:false){id title{romaji english native userPreferred}coverImage{extraLarge large medium}bannerImage description(asHtml:false)episodes duration status format seasonYear averageScore genres tags{name}trailer{id site} }}}`;
-let page=1,hasNext=true,current=null,query='',filter='';
+const Q=`query($page:Int,$search:String,$year:Int,$status:MediaStatus){Page(page:$page,perPage:24){pageInfo{currentPage lastPage hasNextPage}media(type:ANIME,search:$search,seasonYear:$year,status:$status,sort:POPULARITY_DESC,isAdult:false){id title{romaji english native userPreferred}synonyms coverImage{extraLarge large medium}bannerImage description(asHtml:false)episodes duration status format seasonYear averageScore genres tags{name}trailer{id site}}}}`;
+const FETCH_TIMEOUT=12000;
+const EPISODE_SOURCES={};
+let page=1,hasNext=true,current=null,query='',filter='',episodeNo=1;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function t(a){return a.title?.userPreferred||a.title?.english||a.title?.romaji||a.title?.native||'Без названия'}
+function searchText(a){return [a.title?.userPreferred,a.title?.english,a.title?.romaji,a.title?.native,...(a.synonyms||[])].filter(Boolean).join(' ').toLocaleLowerCase('ru-RU')}
 function map(a){return {...a,titleText:t(a),cover:a.coverImage?.extraLarge||a.coverImage?.large||a.coverImage?.medium||''}}
-async function fetchAnime(p=1,q='',year=null,status=null){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:Q,variables:{page:p,search:q||null,year,status}})});if(!r.ok)throw Error('API '+r.status);const j=await r.json();if(j.errors)throw Error(j.errors[0]?.message||'API error');return j.data.Page}
-function card(a){const d=map(a),e=document.createElement('article');e.className='card';e.innerHTML='<div class="cover"><img loading="lazy" src="'+d.cover+'" alt="'+esc(d.titleText)+'"><span class="age">'+(d.format==='MOVIE'?'Фильм':'Аниме')+'</span></div><div class="ct"><b>'+esc(d.titleText)+'</b><small>'+esc([d.seasonYear,d.format,d.averageScore?'★ '+(d.averageScore/10).toFixed(1):''].filter(Boolean).join(' · '))+'</small></div>';e.onclick=()=>openAnime(d);return e}
-async function load(reset=true){if(reset){page=1;$('grid').innerHTML='';$('more').innerHTML=''}$('count').textContent='Загрузка…';try{const status=filter==='ongoing'?'RELEASING':null,yearVal=/^\d+$/.test(filter)?Number(filter):null;const data=await fetchAnime(page,query,yearVal,status);hasNext=data.pageInfo.hasNextPage;data.media.map(map).forEach(a=>$('grid').appendChild(card(a)));$('count').textContent=(page===1?'':'Загружено ')+(document.querySelectorAll('.card').length)+' тайтлов';if(hasNext){const b=document.createElement('button');b.className='primary';b.textContent='Загрузить ещё';b.onclick=()=>{page++;load(false)};$('more').appendChild(b)}}catch(e){$('grid').innerHTML='<div class="empty">Не удалось загрузить каталог.<br>'+esc(e.message)+'<br><br><button class="primary" onclick="load()">Повторить</button></div>'}}
-function openAnime(a){current=a;$('modal').classList.add('open');$('detailPoster').src=a.cover;$('detailTitle').textContent=a.titleText;$('detailOrig').textContent=a.title?.romaji||'';$('detailSub').textContent=[a.format==='TV'?'Сериал':a.format==='MOVIE'?'Фильм':a.format,a.seasonYear?'· '+a.seasonYear:''].join(' ');$('detailChips').innerHTML=(a.genres||[]).slice(0,5).map(g=>'<span class="chip">'+esc(g)+'</span>').join('');$('mType').textContent=a.format||'—';$('mEpisodes').textContent=a.episodes||'—';$('mYear').textContent=a.seasonYear||'—';$('mStatus').textContent=a.status||'—';$('mRating').textContent=a.averageScore?(a.averageScore/10).toFixed(1)+'/10':'—';$('detailDesc').textContent=(a.description||'Описание отсутствует.').replace(/<[^>]+>/g,'');showYT()}
-function showYT(){if(!current)return;$('tabYT').classList.add('active');$('tabHTML').classList.remove('active');const tr=current.trailer;if(tr?.site==='youtube'&&tr.id){$('video').innerHTML='<iframe src="https://www.youtube.com/embed/'+encodeURIComponent(tr.id)+'?autoplay=0&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';$('hint').textContent='Официальный трейлер/видео, предоставленный YouTube.'}else{$('video').innerHTML='<div style="height:100%;display:grid;place-items:center;color:#a1a1aa;padding:30px;text-align:center">Для этого тайтла AniList не указал YouTube-трейлер.</div>';$('hint').textContent='Если у тебя есть легальный URL полного видео, его можно подключить к HTML5-плееру.'}}
-function showHTML(){if(!current)return;$('tabHTML').classList.add('active');$('tabYT').classList.remove('active');$('video').innerHTML='<video controls playsinline preload="metadata"></video>';$('hint').textContent='HTML5-плеер оставлен для твоих собственных/разрешённых видео. Я не подставляю пиратские ссылки на серии.'}
-function closeModal(){$('modal').classList.remove('open');$('video').innerHTML='';current=null}
+async function fetchAnime(p=1,q='',year=null,status=null){
+  const controller=new AbortController(), timer=setTimeout(()=>controller.abort(),FETCH_TIMEOUT);
+  try{
+    const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:Q,variables:{page:p,search:q||null,year,status}}),signal:controller.signal});
+    if(!r.ok)throw Error('API '+r.status);
+    const j=await r.json();if(j.errors)throw Error(j.errors[0]?.message||'API error');return j.data.Page;
+  }finally{clearTimeout(timer)}
+}
+function card(a){
+  const d=map(a),e=document.createElement('article');e.className='card';
+  e.innerHTML='<div class="cover"><img loading="lazy" src="'+d.cover+'" alt="'+esc(d.titleText)+'"><span class="age">'+(d.format==='MOVIE'?'Фильм':'Аниме')+'</span></div><div class="ct"><b>'+esc(d.titleText)+'</b><small>'+esc([d.seasonYear,d.format,d.averageScore?'★ '+(d.averageScore/10).toFixed(1):''].filter(Boolean).join(' · '))+'</small></div>';
+  e.onclick=()=>openAnime(d);return e;
+}
+async function load(reset=true){
+  if(reset){page=1;$('grid').innerHTML='';$('more').innerHTML=''}
+  $('count').textContent='Загрузка…';
+  try{
+    const status=filter==='ongoing'?'RELEASING':null,yearVal=/^\d+$/.test(filter)?Number(filter):null;
+    const data=await fetchAnime(page,query,yearVal,status);hasNext=data.pageInfo.hasNextPage;
+    data.media.map(map).forEach(a=>$('grid').appendChild(card(a)));
+    $('count').textContent=document.querySelectorAll('.card').length+' тайтлов';
+    $('more').innerHTML='';
+    if(hasNext){const b=document.createElement('button');b.className='primary';b.textContent='Загрузить ещё';b.onclick=()=>{page++;load(false)};$('more').appendChild(b)}
+  }catch(e){$('grid').innerHTML='<div class="empty">Не удалось загрузить каталог.<br>'+esc(e.name==='AbortError'?'Сервер отвечает слишком долго.':e.message)+'<br><br><button class="primary" onclick="load()">Повторить</button></div>'}
+}
+function openAnime(a){
+  current=a;$('modal').classList.add('open');$('detailPoster').src=a.cover;$('detailTitle').textContent=a.titleText;
+  $('detailOrig').textContent=[a.title?.romaji,...(a.synonyms||[])].filter(Boolean).slice(0,3).join(' · ');
+  $('detailSub').textContent=[a.format==='TV'?'Сериал':a.format==='MOVIE'?'Фильм':a.format,a.seasonYear?'· '+a.seasonYear:''].join(' ');
+  $('detailChips').innerHTML=(a.genres||[]).slice(0,5).map(g=>'<span class="chip">'+esc(g)+'</span>').join('');
+  $('mType').textContent=a.format||'—';$('mEpisodes').textContent=a.episodes||'—';$('mYear').textContent=a.seasonYear||'—';$('mStatus').textContent=a.status||'—';$('mRating').textContent=a.averageScore?(a.averageScore/10).toFixed(1)+'/10':'—';
+  $('detailDesc').textContent=(a.description||'Описание отсутствует.').replace(/<[^>]+>/g,'');episodeNo=1;showYT();
+}
+function showYT(){
+  if(!current)return;$('tabYT').classList.add('active');$('tabHTML').classList.remove('active');$('episodes').innerHTML='';
+  const tr=current.trailer;
+  if(tr?.site==='youtube'&&tr.id){$('video').innerHTML='<iframe src="https://www.youtube.com/embed/'+encodeURIComponent(tr.id)+'?autoplay=0&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';$('hint').textContent='Официальный трейлер/видео, предоставленный YouTube.'}
+  else{$('video').innerHTML='<div style="height:100%;display:grid;place-items:center;color:#a1a1aa;padding:30px;text-align:center">Для этого тайтла нет доступного официального трейлера.</div>';$('hint').textContent=''}
+}
+function showHTML(){
+  if(!current)return;$('tabHTML').classList.add('active');$('tabYT').classList.remove('active');
+  const n=Number(current.episodes||0),max=n>0?Math.min(n,100):0;
+  $('episodes').innerHTML=max?Array.from({length:max},(_,i)=>'<button class="episode'+(i+1===episodeNo?' active':'')+'" onclick="playEpisode('+(i+1)+')">'+(i+1)+'</button>').join(''):'';
+  renderEpisode();
+}
+function renderEpisode(){
+  const src=EPISODE_SOURCES[String(current.id)]?.[String(episodeNo)]||'';
+  $('video').innerHTML=src?'<video controls playsinline preload="metadata" src="'+esc(src)+'"></video>':'<div style="height:100%;display:grid;place-items:center;color:#a1a1aa;padding:30px;text-align:center">Серия '+episodeNo+' выбрана.<br>Укажи URL своей/разрешённой серии ниже.</div>';
+  $('hint').innerHTML='<div class="sourceRow"><input id="sourceInput" class="sourceInput" placeholder="URL разрешённого видео для серии '+episodeNo+'" value="'+esc(src)+'"><button class="sourceBtn" onclick="setEpisodeSource()">Открыть</button></div>';
+}
+function playEpisode(n){episodeNo=n;showHTML()}
+function setEpisodeSource(){
+  const input=$('sourceInput');if(!input||!current)return;const src=input.value.trim();if(!src)return;
+  EPISODE_SOURCES[String(current.id)]??={};EPISODE_SOURCES[String(current.id)][String(episodeNo)]=src;renderEpisode();
+}
+function closeModal(){$('modal').classList.remove('open');$('video').innerHTML='';$('episodes').innerHTML='';$('hint').innerHTML='';current=null}
 $('modal').onclick=e=>{if(e.target===$('modal'))closeModal()};
 $('search').oninput=e=>{clearTimeout(window.st);query=e.target.value.trim();window.st=setTimeout(()=>load(true),450)};
-function home(){query='';filter='';$('search').value='';load();return false}function ongoing(){filter='ongoing';query='';$('search').value='';load();return false}function year(y){filter=String(y);query='';$('search').value='';load();return false}
-(async()=>{try{const d=await fetchAnime(1);if(d.media[0]){const a=map(d.media[0]);$('heroBg').style.backgroundImage='url("'+a.bannerImage+'")';$('heroPoster').src=a.cover;$('heroTitle').textContent=a.titleText;$('heroSub').textContent=[a.format==='TV'?'Сериал':a.format,a.seasonYear?'· '+a.seasonYear:''].join(' ');$('heroChips').innerHTML='<span class="chip rating">★ <b>'+((a.averageScore||0)/10).toFixed(1)+'</b></span>'+((a.genres||[]).slice(0,2).map(g=>'<span class="chip">'+esc(g)+'</span>').join(''));$('heroDesc').textContent=(a.description||'').replace(/<[^>]+>/g,'').slice(0,420);$('heroWatch').onclick=()=>openAnime(a)}}catch{}load()})()
-</script>
+function home(){query='';filter='';$('search').value='';load();return false}
+function ongoing(){filter='ongoing';query='';$('search').value='';load();return false}
+function year(y){filter=String(y);query='';$('search').value='';load();return false}
+(async()=>{
+  try{
+    const d=await fetchAnime(1);if(d.media[0]){
+      const a=map(d.media[0]);if(a.bannerImage)$('heroBg').style.backgroundImage='url("'+a.bannerImage+'")';$('heroPoster').src=a.cover;$('heroTitle').textContent=a.titleText;
+      $('heroSub').textContent=[a.format==='TV'?'Сериал':a.format,a.seasonYear?'· '+a.seasonYear:''].join(' ');
+      $('heroChips').innerHTML='<span class="chip rating">★ <b>'+((a.averageScore||0)/10).toFixed(1)+'</b></span>'+((a.genres||[]).slice(0,2).map(g=>'<span class="chip">'+esc(g)+'</span>').join(''));
+      $('heroDesc').textContent=(a.description||'').replace(/<[^>]+>/g,'').slice(0,420);$('heroWatch').onclick=()=>openAnime(a);
+    }
+  }catch(e){$('heroTitle').textContent='Каталог аниме';$('heroDesc').textContent=''}
+  load();
+})()
+</script></script>
 </body>
 </html>
