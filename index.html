@@ -106,7 +106,7 @@ async function load(q='',p=1){
 }
 function openPlayer(a){
  current=a;$('modal').classList.add('open');$('ptitle').textContent=title(a);
- const t=a.trailer?.id,a.site=a.trailer?.site;
+ const t=a.trailer?.id;const site=a.trailer?.site;
  $('pinfo').textContent=t&&a.site==='youtube'?'Официальный трейлер YouTube':'Для этого тайтла API не вернул трейлер. Можно использовать HTML5-режим для собственного разрешённого видео.';
  if(t&&a.site==='youtube')showYT(t);else showDemo();
 }
