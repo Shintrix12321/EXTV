@@ -1,1 +1,120 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EXTV — Anime</title><style>*{box-sizing:border-box}body{margin:0;background:#0f1012;color:#f5f5f5;font-family:Arial,sans-serif}header{position:sticky;top:0;background:#101114f5;border-bottom:1px solid #292a2e;z-index:5}.bar,main{max-width:1400px;margin:auto}.bar{padding:10px 22px;display:flex;align-items:center;gap:14px}.logo{font-weight:900;font-size:22px}.logo span{color:#ff4d5e}.search{flex:1;max-width:650px;background:#18191c;border:1px solid #303238;border-radius:8px;padding:11px 14px;color:#fff;outline:0}.search:focus{border-color:#ff4d5e}button{font:inherit;cursor:pointer;border:1px solid #303238;background:#18191c;color:#f5f5f5;border-radius:8px;padding:10px 14px}.primary{background:#ff4d5e;color:#111;font-weight:700}main{padding:20px 22px}.hero{padding:30px;border:1px solid #303238;border-radius:14px;background:linear-gradient(110deg,#28181e,#17181c 55%,#111214)}h1{margin:0 0 10px;font-size:clamp(28px,4vw,46px)}p{color:#a6a7ad;line-height:1.55}.actions{display:flex;gap:10px;margin-top:18px}.status{text-align:center;color:#a6a7ad;padding:28px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;margin-top:22px}.card{background:#18191c;border:1px solid #303238;border-radius:10px;overflow:hidden;text-decoration:none;color:#f5f5f5}.card:hover{border-color:#ff4d5e}.cover{aspect-ratio:2/3;background:#24252a}.cover img{width:100%;height:100%;object-fit:cover}.ct{padding:11px 12px}.ct b{display:block;min-height:38px;line-height:1.35}.ct small{display:block;color:#a6a7ad;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pages{display:flex;justify-content:center;gap:8px;margin:26px 0}.spin{display:inline-block;width:24px;height:24px;border:3px solid #555;border-top-color:#ff4d5e;border-radius:50%;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}@media(max-width:700px){.bar{padding:9px 12px}.bar button{display:none}main{padding:14px 12px}.hero{padding:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}</style></head><body><header><div class="bar"><div class="logo">EXT<span>V</span></div><input id="search" class="search" placeholder="Поиск аниме..." autocomplete="off"><button id="random">Случайное</button></div></header><main><section class="hero"><h1>Аниме с настоящими обложками</h1><p>Реальный каталог из MyAnimeList через Jikan API. Обложки не генерируются ИИ.</p><div class="actions"><button id="popular" class="primary">Популярные</button><button id="retry">Повторить</button></div></section><div id="status" class="status"><span class="spin"></span><br>Загружаем каталог…</div><div id="grid" class="grid"></div><div id="pages" class="pages"></div><p>Источник каталога: MyAnimeList через Jikan API.</p></main><script>const API='https://api.jikan.moe/v4/anime',g=id=>document.getElementById(id);let page=1,last=1,q='';const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));function card(a){let img=a.images?.jpg?.large_image_url||a.images?.jpg?.image_url||'',e=document.createElement('a');e.className='card';e.target='_blank';e.rel='noreferrer';e.href='https://myanimelist.net/anime/'+a.mal_id;e.innerHTML='<div class="cover">'+(img?'<img loading="lazy" src="'+img+'" alt="'+esc(a.title)+'">':'')+'</div><div class="ct"><b>'+esc(a.title)+'</b><small>'+esc([a.year,a.type,a.score?'★ '+a.score.toFixed(1):''].filter(Boolean).join(' · '))+'</small></div>';return e}async function load(query='',p=1){q=query;page=p;g('grid').innerHTML='';g('pages').innerHTML='';g('status').style.display='block';g('status').innerHTML='<span class="spin"></span><br>Загружаем каталог…';try{let u=new URL(API);u.searchParams.set('page',p);u.searchParams.set('limit',24);u.searchParams.set('sfw','true');u.searchParams.set('order_by','score');u.searchParams.set('sort','desc');if(query.trim())u.searchParams.set('q',query.trim());let r=await fetch(u);if(!r.ok)throw Error('HTTP '+r.status);let j=await r.json(),a=j.data||[];last=j.pagination?.last_visible_page||1;if(!a.length){g('status').textContent='Ничего не найдено.';return}g('status').style.display='none';a.forEach(x=>g('grid').appendChild(card(x)));let b=document.createElement('button');b.textContent='← Назад';b.disabled=p<=1;b.onclick=()=>load(q,p-1);let n=document.createElement('button');n.textContent='Дальше →';n.disabled=p>=last;n.onclick=()=>load(q,p+1);let i=document.createElement('span');i.className='status';i.style.padding='10px';i.textContent='Страница '+p+' из '+last;g('pages').append(b,i,n)}catch(e){g('status').innerHTML='Не удалось загрузить каталог: '+esc(e.message)+'<br><br><button class="primary" onclick="load(q,page)">Повторить</button>'}}let timer;g('search').oninput=e=>{clearTimeout(timer);timer=setTimeout(()=>load(e.target.value,1),450)};g('popular').onclick=()=>load('',1);g('retry').onclick=()=>load(q,page);g('random').onclick=async()=>{try{let r=await fetch(API+'?page=1&limit=24&sfw=true&order_by=score&sort=desc'),j=await r.json(),a=j.data[Math.floor(Math.random()*j.data.length)];location.href='https://myanimelist.net/anime/'+a.mal_id}catch{}};load();</script></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EXTV — Аниме</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0d0e10;color:#f4f4f5;font-family:Inter,Arial,sans-serif}
+header{position:sticky;top:0;z-index:20;background:#111216f2;border-bottom:1px solid #292a30;backdrop-filter:blur(14px)}
+.bar,main{max-width:1400px;margin:auto}.bar{height:64px;padding:0 22px;display:flex;align-items:center;gap:14px}
+.logo{font-weight:900;font-size:22px;letter-spacing:.5px}.logo span{color:#ff4d5e}
+.search{flex:1;max-width:700px;background:#191a1e;color:#fff;border:1px solid #303238;border-radius:9px;padding:11px 14px;outline:0}.search:focus{border-color:#ff4d5e}
+button{font:inherit;border:1px solid #35363c;background:#191a1e;color:#eee;border-radius:8px;padding:10px 14px;cursor:pointer}button:hover{border-color:#ff4d5e}button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:#ff4d5e;color:#111;border-color:#ff4d5e;font-weight:800}
+main{padding:20px 22px}.hero{padding:30px;border:1px solid #303139;border-radius:15px;background:linear-gradient(110deg,#28171d,#17181d 58%,#111215)}
+.hero h1{margin:0 0 9px;font-size:clamp(28px,4vw,45px)}.hero p{color:#a9abb3;line-height:1.55;max-width:900px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.status{text-align:center;color:#a9abb3;padding:30px}.spinner{display:inline-block;width:25px;height:25px;border:3px solid #555;border-top-color:#ff4d5e;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:16px;margin-top:22px}
+.card{background:#18191d;border:1px solid #2f3036;border-radius:10px;overflow:hidden;color:#f4f4f5;text-decoration:none;cursor:pointer;transition:.18s}.card:hover{transform:translateY(-3px);border-color:#ff4d5e}
+.cover{aspect-ratio:2/3;background:#24262b}.cover img{width:100%;height:100%;object-fit:cover;display:block}.ct{padding:11px 12px}.ct b{display:block;line-height:1.35;min-height:38px}.ct small{display:block;color:#a9abb3;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pages{display:flex;justify-content:center;align-items:center;gap:8px;margin:26px 0}.pages span{color:#aaa;padding:10px}
+.note{font-size:12px;color:#70727a;line-height:1.55}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal.open{display:flex}.player{width:min(1050px,100%);background:#121317;border:1px solid #363840;border-radius:12px;overflow:hidden;box-shadow:0 20px 70px #000}
+.player-head{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid #2d2e34}.player-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.player-body{padding:14px}.screen{aspect-ratio:16/9;background:#050505;border-radius:8px;overflow:hidden}.screen iframe,.screen video{width:100%;height:100%;border:0;display:block}.switch{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.muted{color:#a0a2a9;font-size:13px}
+@media(max-width:700px){.bar{height:auto;padding:9px 12px}.bar button{display:none}main{padding:14px 12px}.hero{padding:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.search{min-width:0}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<div class="logo">EXT<span>V</span></div>
+<input id="search" class="search" placeholder="Поиск аниме..." autocomplete="off">
+<button id="random">Случайное</button>
+</div></header>
+<main>
+<section class="hero">
+<h1>Аниме с настоящими обложками</h1>
+<p>Каталог получает реальные данные и обложки из AniList. Если AniList временно недоступен, автоматически используется Jikan. Никаких сгенерированных ИИ обложек.</p>
+<div class="actions"><button id="popular" class="primary">Популярные</button><button id="retry">Повторить</button></div>
+</section>
+<div id="status" class="status"><span class="spinner"></span><br>Загружаем аниме…</div>
+<div id="grid" class="grid"></div>
+<div id="pages" class="pages"></div>
+<p class="note">В карточке «Смотреть» открывается доступный официальный трейлер. Полные серии нельзя легально раздавать с чужих серверов без разрешения правообладателя; поэтому я не подставляю пиратские видеоссылки.</p>
+</main>
+
+<div id="modal" class="modal">
+<div class="player">
+<div class="player-head"><div id="ptitle" class="player-title">Плеер</div><button id="close">✕</button></div>
+<div class="player-body">
+<div id="screen" class="screen"></div>
+<div class="switch"><button id="yt" class="primary">YouTube</button><button id="demo">HTML5-плеер</button></div>
+<div id="pinfo" class="muted" style="margin-top:9px"></div>
+</div></div></div>
+
+<script>
+const ANILIST='https://graphql.anilist.co';
+const JIKAN='https://api.jikan.moe/v4/anime';
+let page=1,query='',last=1,current=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const animeQuery=`
+query($page:Int,$search:String){
+ Page(page:$page,perPage:24){
+  pageInfo{currentPage lastPage hasNextPage}
+  media(type:ANIME,search:$search,sort:POPULARITY_DESC,isAdult:false){
+   id siteUrl title{romaji english native userPreferred}
+   coverImage{extraLarge large medium}
+   episodes seasonYear format averageScore
+   trailer{id site}
+  }
+ }
+}`;
+async function ani(search,p){
+ const r=await fetch(ANILIST,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({query:animeQuery,variables:{page:p,search:search||null}})});
+ if(!r.ok)throw Error('AniList HTTP '+r.status);
+ const j=await r.json();if(j.errors)throw Error(j.errors[0]?.message||'AniList error');
+ return j.data.Page;
+}
+async function jikan(search,p){
+ const u=new URL(JIKAN);u.searchParams.set('page',p);u.searchParams.set('limit',24);u.searchParams.set('sfw','true');u.searchParams.set('order_by','score');u.searchParams.set('sort','desc');
+ if(search)u.searchParams.set('q',search);
+ const r=await fetch(u);if(!r.ok)throw Error('Jikan HTTP '+r.status);const j=await r.json();
+ return {media:(j.data||[]).map(a=>({id:a.mal_id,siteUrl:'https://myanimelist.net/anime/'+a.mal_id,title:{romaji:a.title,english:a.title,userPreferred:a.title},coverImage:{extraLarge:a.images?.jpg?.large_image_url,large:a.images?.jpg?.image_url},episodes:a.episodes,seasonYear:a.year,format:a.type,averageScore:a.score?Math.round(a.score*10):null,trailer:null})),pageInfo:{currentPage:p,lastPage:j.pagination?.last_visible_page||1,hasNextPage:!!j.pagination?.has_next_page}},fallback:true};
+}
+function title(a){return a.title?.userPreferred||a.title?.english||a.title?.romaji||a.title?.native||'Без названия'}
+function card(a){
+ const e=document.createElement('div');e.className='card';
+ const img=a.coverImage?.extraLarge||a.coverImage?.large||a.coverImage?.medium;
+ const meta=[a.seasonYear,a.format,a.episodes? a.episodes+' эп.':'',a.averageScore?'★ '+(a.averageScore/10).toFixed(1):''].filter(Boolean).join(' · ');
+ e.innerHTML='<div class="cover">'+(img?'<img loading="lazy" src="'+img+'" alt="'+esc(title(a))+'">':'')+'</div><div class="ct"><b>'+esc(title(a))+'</b><small>'+esc(meta)+'</small></div>';
+ e.onclick=()=>openPlayer(a);return e;
+}
+async function load(q='',p=1){
+ query=q;page=p;$('grid').innerHTML='';$('pages').innerHTML='';$('status').style.display='block';$('status').innerHTML='<span class="spinner"></span><br>Загружаем аниме…';
+ try{
+  let data,source;
+  try{data=await ani(q,p);source='AniList';}catch(e){data=await jikan(q,p);source='Jikan';}
+  last=data.pageInfo.lastPage||p;
+  if(!data.media?.length){$('status').textContent='Ничего не найдено.';return}
+  $('status').style.display='none';data.media.forEach(a=>$('grid').appendChild(card(a)));
+  const b=document.createElement('button');b.textContent='← Назад';b.disabled=p<=1;b.onclick=()=>load(query,p-1);
+  const s=document.createElement('span');s.textContent='Страница '+p+' из '+last+' · '+source;
+  const n=document.createElement('button');n.textContent='Дальше →';n.disabled=!data.pageInfo.hasNextPage && p>=last;n.onclick=()=>load(query,p+1);
+  $('pages').append(b,s,n);
+ }catch(e){$('status').innerHTML='Оба каталога сейчас недоступны.<br><small>'+esc(e.message)+'</small><br><br><button class="primary" onclick="load(query,page)">Повторить</button>'}
+}
+function openPlayer(a){
+ current=a;$('modal').classList.add('open');$('ptitle').textContent=title(a);
+ const t=a.trailer?.id,a.site=a.trailer?.site;
+ $('pinfo').textContent=t&&a.site==='youtube'?'Официальный трейлер YouTube':'Для этого тайтла API не вернул трейлер. Можно использовать HTML5-режим для собственного разрешённого видео.';
+ if(t&&a.site==='youtube')showYT(t);else showDemo();
+}
+function showYT(id){$('screen').innerHTML='<iframe src="https://www.youtube.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';$('yt').classList.add('primary');$('demo').classList.remove('primary')}
+function showDemo(){ $('screen').innerHTML='<video controls playsinline src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>';$('demo').classList.add('primary');$('yt').classList.remove('primary');$('pinfo').textContent='Демо HTML5-видео. Замени src на URL своего разрешённого видео, если у тебя есть права на его размещение.'}
+$('close').onclick=()=>{$('modal').classList.remove('open');$('screen').innerHTML=''};$('modal').onclick=e=>{if(e.target===$('modal'))$('close').click()};$('yt').onclick=()=>{const id=current?.trailer?.id;if(id&&current.trailer.site==='youtube')showYT(id)};$('demo').onclick=showDemo;
+let timer;$('search').oninput=e=>{clearTimeout(timer);timer=setTimeout(()=>load(e.target.value.trim(),1),450)};$('popular').onclick=()=>load('',1);$('retry').onclick=()=>load(query,page);
+$('random').onclick=async()=>{try{const d=await ani('',1),a=d.media[Math.floor(Math.random()*d.media.length)];openPlayer(a)}catch{}};
+load('',1);
+</script>
+</body></html>
